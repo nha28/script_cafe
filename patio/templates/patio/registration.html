@@ -1,0 +1,44 @@
+{% extends 'popup_form.html' %}
+{% block extra_script_link %}
+{% load staticfiles %}
+<link rel='stylesheet' type='text/css' href='{% static "patio/registration.css" %}' />
+{% endblock %}
+
+{% block popup_title %}Registration{% endblock %}
+
+{% block body %}
+<div id='form_container'>
+	<form id='form' method='post' action='{% url "patio:registration" %}'>
+		{% csrf_token %}
+		{% for field in form %}
+        <div class='field_wrapper'>
+            <div id="labelname">{{ field.label_tag }}</div>
+            <div id="error"><strong>{{ field.errors }}</strong><div>
+            <div id="field">{{ field }}</div>
+            <p>{{ field.help_text }}</p>
+        </div>
+        {% endfor %}
+        <input id="button" type='submit'/>
+	</form>
+</div>
+{% endblock %}
+
+
+
+
+
+<!--
+<div id='form_container'>
+	<form id='form' method='post' action='{% url "patio:registration" %}'>
+		{% csrf_token %}
+		{% for field in form %}
+        <div class='field_wrapper'>
+            <div>{{ field.label_tag }}</div>
+            <div>{{ field.errors }}<div>
+            <div>{{ field }}</div>
+            <p>{{ field.help_text }}</p>
+        </div>
+        {% endfor %}
+        <input id="button" type='submit'/>
+	</form>
+</div> -->

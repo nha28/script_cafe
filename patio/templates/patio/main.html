@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Script Café --- an online web development study platform{% endblock %}
+
+{% block extra_script_link %}
+{% load staticfiles %}
+<script type='text/javascript' src='{% static 'patio/main.js' %}'>
+</script>
+<link rel='stylesheet' type='text/css' href='{% static 'patio/main.css' %}'>
+</link>
+{% endblock %}
+
+{% block page_title %}Main Page{% endblock %}
+
+{% block body %}
+<div id="left">
+	<p id="p1"><i>Welcome to <strong>Script Café</strong> --- an online web development study platform.</i></p>
+	<p id="p2">You will have a journey to learn how to code interactively for <strong>FREE</strong>!</p>
+	<p id="p3">Wanna create a website like the one on the right-hand side? </p>
+	<p>Are you a member of Script Café? If not, join us <strong>NOW</strong> by creating your personal account.</p>
+</div>
+{% endblock %}
+

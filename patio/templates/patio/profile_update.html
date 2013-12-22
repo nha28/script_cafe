@@ -1,0 +1,29 @@
+{% extends 'popup_form.html' %}
+
+{% block extra_script_link %}
+    {% load staticfiles %}
+    <script type='text/javascript' src='{% static 'patio/profile_update.js' %}'></script>
+	<link rel='stylesheet' type='text/css' href='{% static "patio/profile_update.css" %}' />
+{% endblock %}
+
+{% block popup_title %}Profile Update{% endblock %}
+{% block body %}
+<div id='form_container'>
+	<form id='form' method='post' action='{% url "patio:profile_update" %}'>
+		{% csrf_token %}
+		{% for field in form %}
+        <div class='field_wrapper'>
+            <div id="labelname">{{ field.label_tag }}</div>
+            <div id="error"><strong>{{ field.errors }}</strong><div>
+            <div id="field">{{ field }}</div>
+            <p>{{ field.help_text }}</p>
+        </div>
+        {% endfor %}
+        <input id="button" type='submit'/>
+	</form>
+</div>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,72 @@
+#center_div {
+    position: relative;
+    top: 5em;
+    width: 100%;
+}
+
+#video_wrapper {
+    position: relative;
+    height: 315px;
+    width: 420px;
+    background: #fff;
+    margin: 0 auto;
+    -webkit-box-shadow: 0px 1px 2px #ccc;
+    -moz-box-shadow: 0px 1px 2px #ccc;
+    -shadow: 0px 1px 2px #ccc;
+}
+
+#right_button, #left_button {
+    position: absolute;
+    top: 50%;
+    margin: 1em;
+    padding: 0.5em;
+    -moz-border-radius: 5px 5px;
+    -webkit-border-radius: 5px 5px;
+    border-radius: 5px 5px;
+    border: 1px solid #e1d6b1;
+    font-size: 14px;
+}
+
+#right_button:link, #left_button:link, #right_button:visited, 
+#left_button:visited {
+    text-decoration: none;
+    color: #86722c;
+}
+
+#right_button:hover, #left_button:hover {
+    color: #fff;
+    background: #a09a88;
+}
+
+#right_button {
+    right: 2em;
+}
+
+#left_button {
+    left: 2em;
+}
+
+#expand_btn {
+    margin: 0.5em;
+    opacity: 0.4;
+    transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    cursor: pointer;
+    display: block;
+}
+
+#expand_btn:hover {
+    opacity: 1.0;
+    transition: opacity .55s ease-in-out;
+    -moz-transition: opacity .55s ease-in-out;
+    -webkit-transition: opacity .55s ease-in-out;
+}
+
+
+#top_left_wrapper {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    min-width: 40%;
+}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block h1 %}End of Course{% endblock %}
+
+{% block extra_script_link %}
+{% load staticfiles %}
+<script type='text/javascript' src='{% static 'courses/end_of_course.js' %}'></script>
+<link rel='stylesheet' type='text/css' href='{% static 'courses/end_of_course.css' %}'></link>
+{% endblock %}
+
+{% block body %}
+
+<p>{{ course.summary }}</p>
+
+<a href='{% url "courses:course_index" %}'>Go back to course index</a>
+
+{% endblock %}

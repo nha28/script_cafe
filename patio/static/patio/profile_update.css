@@ -1,0 +1,51 @@
+body {
+    font-family: Helvetica, sans-serif;
+}
+
+#form_container {
+    position: relative;
+    height: 100%;
+	left: 100px;
+}
+
+#form {
+    margin: 0 auto;
+}
+
+.field_wrapper input {
+    position: relative;
+	left: 180px;
+	padding-bottom: 0;
+}
+
+.field_wrapper p{
+    position: relative;
+	left: 0px;
+	top: 2px;
+	color: #FFCC00
+}
+
+.field_wrapper ul li{
+    position: relative;
+	left: 400px;
+	top: 40px;
+	color: #F00;
+}
+
+.field_wrapper #field{
+    position: relative;
+	left: 0px;
+	top: 15px;
+}
+
+.field_wrapper #labelname{
+    position: relative;
+	left: 0px;
+	top: 35px;
+}
+
+.field_wrapper #button{
+    position: relative;
+	left: -5px;
+	top: 10px;
+}

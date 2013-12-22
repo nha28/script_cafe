@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block extra_script_link %}
+{% load staticfiles %}
+<script type='text/javascript' src='{% static "courses/lesson_index.js" %}'>
+</script>
+<link type='text/css' rel='stylesheet' 
+href='{% static "courses/lesson_index.css" %}' />
+{% endblock %}
+
+{% block page_title %}Lesson list{% endblock %}
+
+{% block body %}
+<p class='main_text'>Currently, we are offering the following {{ course.title }}  lessons. Watch the video, try the challenges!<p>
+<h2>Click to view video for individual lessons or click on the challenges to try them out directly</h2>
+{% for key, lesson in lesson_list.items %}
+<div class='lesson_wrapper'
+    data-url='{% url "courses:lesson" course lesson.no %}'>
+    <h2>{{ lesson.title }}</h2>
+    <p>{{ lesson.description }}</p>
+    <!--    <div class='video_wrapper'></div>--!>
+    <div class='challenge_wrapper'>
+        <ul>
+            {% for key, challenge in lesson.challenges.items %}
+            {% if challenge.completed %}
+            <li>
+            <a class='completed' href='{% url "courses:challenge" course lesson.no challenge.no %}'>{{ challenge.title }}</a> &#10003;
+
+            {% else %}
+            <li>
+            <a class='incomplete' href='{% url "courses:challenge" course lesson.no challenge.no %}'>{{ challenge.title }}</a>
+            {% endif %}
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

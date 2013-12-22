@@ -1,0 +1,30 @@
+#profile_list {
+    list-style: none;
+    padding: 0;
+}
+
+#course_progress_list {
+    list-style: none;
+    padding: 0;
+}
+
+#profile_edit_options span {
+    margin-right: 2em;
+}
+
+#course_progress{
+	float: right;
+	margin-top: -21em;
+
+}
+
+#cssProgress{
+	float: right;
+	margin-top: -19.5em;
+	margin-left: 17em;
+	margin-right: 3em;
+}
+
+#htmlProgress{
+	margin-right: 23em;
+}

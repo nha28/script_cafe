@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Course list{% endblock %}
+
+
+{% block extra_script_link %}
+{% load staticfiles %}
+<script type='text/javascript' src='{% static "courses/course_index.js" %}'>
+</script>
+<link type='text/css' rel='stylesheet' href='{% static "courses/course_index.css" %}' />
+{% endblock %}
+
+{% block page_title %}Course List{% endblock %}
+{% block body %}
+<p class='main_text'>Currently, we are offering the following Course. You can start to try one of them. Enjoy!</p>
+{% for key, course in course_list.items %}
+<div class='course_wrapper' 
+    data-url='{% url "courses:lesson_index" course.slug %}'>
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.short_description }}</p>
+    {% if course.completed %}
+    <p> woo lalala </p>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

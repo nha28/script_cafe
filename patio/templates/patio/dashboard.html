@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block extra_script_link %}
+{% load staticfiles %}
+<script type='text/javascript' src='{% static "patio/dashboard.js" %}'></script>
+<script type="text/javascript" src='{% static "patio/dist/jquery.jqplot.min.js" %}'></script>
+<script type="text/javascript" src='{% static "patio/dist/plugins/jqplot.pieRenderer.min.js" %}'></script>
+<script type="text/javascript" src='{% static "patio/dist/plugins/jqplot.donutRenderer.min.js" %}'></script>
+<link type='text/css' rel='stylesheet' href='{% static "patio/dashboard.css" %}' />
+<link type='text/css' rel='stylesheet' href='{% static "patio/dist/jquery.jqplot.css" %}' />
+{% endblock %}
+
+{% block body %}
+<section id='profile'>
+<header><h2>Profile</h2></header>
+<p><strong>About Me:</strong> {{ userprofile.about_me }} </p>
+<p><strong>Location:</strong> {{ userprofile.location }} </p>
+<ul id='profile_list'>
+    <li><strong>Username: </strong>{{ user.username }}</li>
+    <li><strong>First Name: </strong>{{ user.first_name }}</li>
+    <li><strong>Last Name: </strong>{{ user.last_name }}</li>
+    <li><strong>Email: </strong>{{ user.email }}</li>
+    <li><strong>Last Login: </strong>{{ user.last_login }}</li>
+</ul>
+<p>A student since {{ user.date_joined }}</p>
+<div id='profile_edit_options'>
+    <span><a id='change_password_button' 
+            href='#changePassword' data-url='{% url "patio:password_change" %}' 
+            onclick='get_password_change_form()')>change password</a></span>
+
+    <span><a id='update_profile_button' 
+            href='#updateProfile' data-url='{% url "patio:profile_update" %}' 
+            onclick='get_profile_update_form()')>update profile</a></span>
+</div>
+</section>
+
+<section id='course_progress'>
+<header><h2>Course Progress</h2></header>
+<ul id='course_progress_list'>
+    <li id="htmlProgress"><strong>HTML</strong>
+    <p><span id="html_completed">{{ progress.html_progress }}</span> out of 
+    <span id="html_total">{{ progress.html_total }}</span> have been completed.
+    <p><span>
+        <a href='{% url "courses:lesson_index" "html" %}'>
+            <strong> Here to continue..</strong>
+        </a>
+    </span></p>
+	</p>
+	<div id="chart1" style="width:200px;height:200px"></div>
+	</li>
+	
+	<li id="cssProgress"><strong>CSS</strong>
+    <p><span id="css_completed">{{ progress.css_progress }}</span> out of 
+    <span id="css_total">{{ progress.css_total }}</span> have been completed.
+    <p><span>
+        <a href='{% url "courses:lesson_index" "css" %}'>
+            <strong> Here to continue..</strong>
+        </a>
+    </span></p>
+	</p>
+	<div id="chart2" style="width:200px;height:200px"></div>
+	</li>
+</ul>
+</section>
+
+<section id='activities'>
+<header><h2>Activities</h2></header>
+{% if display_last_challenge %}
+<p><strong>Last challenge: </strong>{{ last_challenge.title }} 
+<a href='{% url "courses:challenge" last_challenge.course_id.slug last_challenge.id %}'>continue</a></p>
+{% else %}
+<p><strong>Last Challenge: </strong>No challenges attempted so far.
+{% endif %}
+
+<p><strong> {{ completed_day }} </strong> Challenges Completed Today!</p>
+<p><strong> {{ completed_week }} </strong> Challenges Completed This Week!</p>
+</section>
+{% endblock %}

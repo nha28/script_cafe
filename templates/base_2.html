@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <meta content='width=985, initial-scale=0.75, maximum-scale=1.0' 
+            name='viewport'>
+        <meta name='description' content=''>
+        <meta name='author' content=''>  
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <div id='body'>
+            {% block body %}{% endblock %}	
+        </div>
+
+        <link rel='stylesheet' type='text/css' 
+        href='{% static 'base_2.css' %}' />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <script type='text/javascript' 
+            src='{% static "jquery-1.10.2.min.js" %}'></script>
+        <script type='text/javascript'
+            src='{% static "jquery-ui-1.10.3.custom.js" %}'></script>
+        <script type='text/javascript' 
+            src='{% static 'base_2.js' %}'></script>
+        <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+            type="text/javascript"></script>
+
+        {% block extra_script_link %}{% endblock %}
+    </body>
+</html>

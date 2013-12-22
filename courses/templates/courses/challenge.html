@@ -1,0 +1,148 @@
+{% extends 'base_2.html' %}
+
+{% block title %}{{ challenge.lesson_id.course_id.title }}:  
+{{ challenge.lesson_id.title }}: {{ challenge.title }}
+{% endblock %}
+
+{% block extra_script_link %}
+{% load staticfiles %}
+<script type='text/javascript' 
+    src='{% static "courses/codemirror/codemirror-compressed.js" %}'></script>
+<link rel="stylesheet" type='text/css' 
+href='{% static "courses/codemirror/codemirror.css" %}' />
+<link rel="stylesheet" type='text/css' 
+href='{% static "courses/codemirror/mbo.css" %}' />
+
+<script type='text/javascript' 
+    src='{% static "courses/html_challenge_validator.js" %}'></script>
+<script type='text/javascript' 
+    src='{% static "courses/challenge.js" %}'></script>
+<link rel='stylesheet' type='text/css' 
+href='{% static "courses/challenge.css" %}' />
+
+
+
+{% endblock %}
+
+{% block body %}
+<div id="user_preview">
+    <div class='tutorial' id="tutorial_4">
+        <p>This window will give you an idea of what your html code will look like on an actual browser.</p>
+    </div>
+
+    <div id='user_preview_content'></div>
+    <!--    <span id='fullscreen_btn'>Full Screen</span>--!>
+    <span id='minimize_btn'>Minimize</span>
+</div>
+
+<div id='left_wrapper'>
+    
+    <div id='top_left_wrapper'>
+        <div id='nav_wrapper'>
+            <nav>
+            <h3>MENU</h3>
+            <a class='links' href='{% url "courses:course_index" %}'>
+                <div class='link_div'>COURSES</div></a>
+            <a class='links' href='{% url "courses:lesson_index" course.slug %}'>
+                <div class='link_div'>LESSONS</div></a>
+
+            {% if user.username %}
+            <a class='links' href='{% url "patio:dashboard" %}'>
+                <div class='link_div'>DASHBOARD</div></a>
+            <a class='links' href='{% url "patio:logout" %}'>
+                <div class='link_div'>LOGOUT</div></a>
+            {% else %}
+            <a class='links' ><div class='link_div'
+                    data-url='{% url "patio:login" %}'>LOGIN</div></a>
+            <a class='links' ><div class='link_div' 
+                    data-url='{% url "patio:registration" %}'>
+                    REGISTER AN ACCOUNT</div></a>
+            {% endif %}
+            </nav>
+        </div>
+    </div>
+
+    <div id='left_top_wrapper'>
+        <img id='expand_btn' height='30' 
+        src='{% static "strip_button.gif" %}' alt='expand btn' />
+        <span>{{ course.title }}</span>
+    </div>
+
+    <div id='left_center_wrapper'>
+        <div id='description_wrapper'>
+<div class='tutorial' id="tutorial_1">
+    <p>This is the description area, besides the video, this should remind you of what you have just learned</p> 
+
+    </div>
+
+            <h1>{{ challenge.lesson_id.title }}</h1> 
+            <h2>{{ challenge.no }}. {{ challenge.title }}</h2>
+            <p>{{ challenge.description|safe }}</p>
+        </div>
+        <div id='instruction_wrapper'>
+<div class='tutorial' id="tutorial_2">
+    <p>A detail instruction of what you are suppose to achieve will be suggested in this section</p>
+    </div>
+
+            <h4>Instructions</h4>
+            {% for instruction in challenge.instruction_set.all %}
+            <p>{{ instruction.description|safe }}</p>
+            {% endfor %}
+        </div>
+        <div id='hint_btn'>Have trouble? Click me to reveal hint.</div>
+        <div id='hint_wrapper'>
+            {% for hint in challenge.hint_set.all %}
+            <p>{{ hint.description|safe }}</p[>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div id='left_footer_wrapper'>
+    </div>
+</div>
+
+<div id='right_wrapper'>
+        <div class='tutorial' id="tutorial_3">
+            <p>Key in your input here</p>
+    </div>
+
+    <div id='user_input_tab'><span>challenge0{{ challenge.no }}.
+            {{ course.slug }}</span></div>
+    <div id='user_input_wrapper'
+        data-url='{% url "courses:challenge" course.slug l_no challenge.no %}'
+        data-validating_info='{{ course.slug }}'
+        data-answer_snippet='{{ challenge.answer_snippet }}'
+        data-new_user={{ the_user.new_user }}
+        data-original_snippet='{{ challenge.snippet }}'>
+        {{ form.snippet }}
+    </div>
+
+    <div id='right_footer_wrapper'>
+    <div class='tutorial' id="tutorial_5">
+        <p>When you are all done, submit and check if you are right</p>
+    </div>
+
+        <span id='save_submit_btn'>Save and Submit</span>
+        <span id='reset_btn'>Reset Code</span>
+    </div>
+
+    <div id='success_result_container'>
+        <div>&#10003;</div>
+        <div id='success_result_message'></div> 
+        <div id='close_success_btn'>&#215;</div>
+    </div>
+
+    <div id='fail_result_container'>
+        <div>!</div>
+        <div id='fail_result_message'></div>
+        <div id='close_fail_btn'>&#215;</div>
+    </div>
+
+    <span id='maximize_btn'>Show Preview</span>
+</div>
+
+
+</div>
+
+{% endblock %}

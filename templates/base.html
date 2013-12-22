@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <meta content='width=985, initial-scale=0.75, maximum-scale=1.0' name='viewport'>
+        <meta name='description' content=''>
+        <meta name='author' content=''>  
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div id='popup_container'>
+        <img id='close_btn' height='19' width='19' 
+        src='{% static "close_btn.gif" %}' alt='close button' />
+        <div id='popup_content'></div>
+    </div>
+    <div id='popup_screen'></div>
+
+    <div id='wrapper'>
+        <div id='header'>
+            <span id='site_title'>Script Café</span>
+            <img id="image" src='{% static "img/coffee.png" %}' height="50" width="50"/>
+            <nav>
+            {% if user.username %}
+            <p class='current_user'>Hi {{ user.username }} :)</p>
+            <a class='links' href='{% url "courses:course_index" %}'>
+                <span>COURSES</span></a>
+
+            <a class='links' href='{% url "patio:dashboard" %}'>
+                <span>DASHBOARD</span></a>
+            <a class='links' href='{% url "patio:logout" %}'>
+                <span>LOGOUT</span></a>
+            {% else %}
+            <p class='current_user'>Welcome to Script Café</p>
+            <a class='links' ><span id='sign_in_button' 
+                    data-url='{% url "patio:login" %}'>LOGIN</span></a>
+            <a class='links' ><span id='create_an_account_button' 
+                    data-url='{% url "patio:registration" %}'>
+                    REGISTER AN ACCOUNT</span></a>
+            {% endif %}
+            </nav>
+        </div>
+
+        <div id='body'>
+            <header><h1>{% block page_title %}{% endblock %}</h1></header>
+
+            {% block body %}
+            {% endblock %}	
+        </div>
+
+        <div id="footer">
+            <div id='footer_1'>
+                <ul>
+                    <li><a id='courses' 
+                        href='{% url "patio:about_us" %}'>About Us</a></li>
+                    <li>Copyright &copy; 2013 Script Café</li>
+                </ul>
+            </div>
+
+            <div id='footer_2'>
+                <ul>
+                    <li><div id='twitter_btn'>
+                    <a href="https://twitter.com/share" 
+                       class="twitter-share-button" 
+                       data-url="http://cmpt470.csil.sfu.ca:8013/school" 
+                       data-text="Script Cafe - Let technology be your friend">
+                       Tweet</a></div></li>				
+                    <li><div id='fb_btn' class="fb-share-button" 
+                       data-href="http://cmpt470.csil.sfu.ca:8013/school" 
+                       data-width="59" data-type="box_count"></div></li>
+                </ul>
+            </div>
+
+            <div id='footer_3'>
+                <ul>
+                    {% if user.username %}
+                    <li><a href='{% url "courses:course_index" %}'>
+                        Courses</a></li>
+                    <li><a href='{% url "patio:dashboard" %}'>
+                        Dashboard</a></li>
+                    <li><a href='{% url "patio:logout" %}'>
+                        Logout</a></li>
+
+                        {% else %}
+                        <li><a href='{% url "patio:login" %}'>
+                            Login</a></li>
+                        <li><a href='{% url "patio:registration" %}'>
+                            Register and account</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+
+            <link rel='stylesheet' type='text/css' 
+            href='{% static 'base.css' %}' />
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+            <link href='http://fonts.googleapis.com/css?family=Ribeye|Chela+One|Lily+Script+One|Finger+Paint' rel='stylesheet' type='text/css'>
+            <script type='text/javascript' 
+                src='{% static "jquery-1.10.2.min.js" %}'></script>
+            <script type='text/javascript'
+                src='{% static "jquery-ui-1.10.3.custom.js" %}'></script>
+            <script type='text/javascript' 
+                src='{% static 'base.js' %}'></script>
+            <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+                type="text/javascript"></script>
+
+            {% block extra_script_link %}{% endblock %}
+        </body>
+    </html>

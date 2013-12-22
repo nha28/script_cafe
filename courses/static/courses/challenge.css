@@ -1,0 +1,354 @@
+body {
+}
+h2 {
+    text-align: center;
+}
+
+/*things that needs border radius*/
+#lessons_btn, #save_submit_btn, #reset_btn, #fullscreen_btn, 
+#minimize_btn, #user_preview, #success_result_container, 
+#fail_result_container, #success_btn {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#left_wrapper {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #f8f5e8;
+    width: 25%;
+    height: 100%;
+}
+
+#right_wrapper {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #333;
+    height: 100%;
+    width: 75%;
+    vertical-align: top;
+}
+
+#left_top_wrapper span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5em;
+    color: #aaa;
+    font-weight: 700;
+    vertical-align: top
+}
+
+#expand_btn {
+    margin: 0.5em;
+    opacity: 0.4;
+    transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    cursor: pointer;
+    display: block;
+}
+
+#expand_btn:hover {
+    opacity: 1.0;
+    transition: opacity .55s ease-in-out;
+    -moz-transition: opacity .55s ease-in-out;
+    -webkit-transition: opacity .55s ease-in-out;
+}
+
+#left_center_wrapper {
+     position: absolute;
+     top: 10%;
+     left: 0;
+     bottom: 5%;
+     width: 100%;
+     overflow: auto;
+}
+
+#left_footer_wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5%;
+    width: 100%;
+    background: #e1d6b1;
+    border-top: 1px solid #fff;
+}
+
+#hint_btn {
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    background: #bbb;
+    font-weight: 300;
+}
+
+#hint_btn:hover {
+    background: #444;
+}
+
+#description_wrapper {
+    min-height: 50%;
+    width: 100%;
+}
+
+#instruction_wrapper {
+    min-height: 30%;
+    width: 100%;
+    background: #f8f1d8;
+}
+
+#hint_wrapper {
+    min-height: 30%;
+    background: #e1d6b1;
+    width: 100%;
+    display: none;
+}
+
+#user_input_wrapper {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    bottom: 5em;
+    width: 100%;
+}
+
+#user_input_tab {
+    margin: 0.5em;
+    padding: 0;
+}
+
+#user_input_tab span {
+    position: relative;
+    top: 0.2em;
+    background: #2c2c2c;
+    height: 1.5em;
+    margin: 2em;
+    padding: 0.4em 1.5em 0 1.5em;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    color: #999;
+    font-weight: 300;
+    font-size: 14px;
+}
+
+#right_footer_wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5em;
+    border-top: 1px solid #666;
+}
+
+#save_submit_btn, #reset_btn {
+    background: #333;
+    border: 1px solid #555;
+    padding: 0.5em;
+    margin: 0 0 0 2em;
+    color: #fff;
+    cursor: pointer;
+}
+
+#save_submit_btn, #reset_btn {
+    position: relative;
+    top: 30%;
+}
+
+#maximize_btn, #minimize_btn {
+    float: right;
+    margin: 1em 0 1em 1em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#minimize_btn:hover {
+    color: #fff;
+}
+
+#maximize_btn {
+    position: absolute;
+    top: -0.5em;
+    right: 1.5em;
+    color: #ddd;
+    -moz-opacity: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#maximize_btn:hover {
+    color: #777;
+}
+
+#save_submit_btn:hover, #reset_btn:hover {
+    background: #444;
+}
+
+#user_preview {
+    z-index: 8888;
+    position: absolute;
+    top: 10%;
+    right: 1%;
+    padding: 0.5em;
+    width: 30%;
+    height: 45%;
+    background: #666;
+}
+
+#user_preview_content {
+    margin: 0;
+    padding: 5px;
+    background: #fff;
+    height: 82%;
+    color: #000;
+}
+
+#user_preview_content {
+    color: #000;
+    font-size: 12px;
+}
+
+#success_result_container, #fail_result_container {
+    z-index: 1001;
+    position: absolute;
+    -moz-opacity: 0.9;
+    opacity: .90;
+    filter: alpha(opacity=90);
+    display: none;
+}
+
+#success_result_container div, #fail_result_container div {
+    display: inline-block;
+}
+
+#success_result_container {
+    left: 0;
+    bottom: 0;
+    height: 5em;
+    width: 100%;
+    background: #381;
+}
+
+#success_result_container div:nth-child(1) {
+    font-size: 3em;
+    margin: 0.5% 2%;
+    color: #0f0;
+}
+
+#success_result_message {
+    position: relative;
+    top: -10%;
+    color: #fff;
+    font-size: 12px;
+    width: 60%;
+}
+
+#fail_result_container div:nth-child(1) {
+    font-size: 5em;
+    margin: 0 5%;
+    color: #f66;
+}
+
+#fail_result_message {
+    position: relative;
+    top: -15%;
+    font-size: 12px;
+    width: 70%;
+}
+
+#close_success_btn, #close_fail_btn {
+    float: right;
+    margin: 0 0.3em;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+}
+
+#fail_result_container {
+    left: 3em;
+    bottom: 7em;
+    height: 8em;
+    width: 30em;
+    background: #eaa;
+    color: #000;
+}
+
+#success_btn {
+    position: absolute;
+    top: -40%;
+    right: 0%;
+    padding: 0.5em;
+    background: #7e5;
+    border: 3px solid #272;
+    color: #fff;
+    cursor: pointer;
+}
+
+#top_left_wrapper {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    min-width: 80%;
+}
+
+.tutorial {
+    z-index: 9999;
+    position: absolute;
+    padding: 1em;
+    width: 12em;
+    background: #f66;
+    -moz-box-shadow:    3px 1px 6px 1px #888;
+    -webkit-box-shadow: 3px 1px 6px 1px #888;
+    box-shadow:        3px 1px 6px 1px #888;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=80);
+    display: none;
+}
+
+#tutorial_1 {
+    top: 30%;
+    right: 0;
+    -moz-border-radius: 0px 30px 30px 30px;
+    -webkit-border-radius: 0px 30px 30px 30px;
+    border-radius: 0px 30px 30px 30px;
+}
+
+#tutorial_2 {
+    bottom: 0;
+    right: 0;
+    -moz-border-radius: 0px 30px 30px 30px;
+    -webkit-border-radius: 0px 30px 30px 30px;
+    border-radius: 0px 30px 30px 30px;
+}
+
+#tutorial_3 {
+    top: 30%;
+    left: 20%;
+    -moz-border-radius: 0px 30px 30px 30px;
+    -webkit-border-radius: 0px 30px 30px 30px;
+    border-radius: 0px 30px 30px 30px;
+}
+
+#tutorial_4 {
+    bottom: -10%;
+    left: -50%;
+    -moz-border-radius: 30px 0px 30px 30px;
+    -webkit-border-radius: 0px 30px 30px 30px;
+    border-radius: 30px 0px 30px 30px;
+}
+
+#tutorial_5 {
+    top: -70%;
+    left: 20%;
+    -moz-border-radius: 30px 30px 30px 0px;
+    -webkit-border-radius: 30px 30px 30px 0px;
+    border-radius: 30px 30px 30px 0px;
+}
