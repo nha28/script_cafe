@@ -3,8 +3,8 @@ import os, sys
 
 # make sure app's modules can be found
 sys.path.append('/home/weitongs')
-sys.path.append('/home/weitongs/school')
-os.environ['DJANGO_SETTINGS_MODULE'] = 'school.settings'
+sys.path.append('/home/weitongs/script_cafe')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'script_cafe.settings'
 
 # Switch to the directory of your project. (Optional.)
 # os.chdir("/home/weitongs/mysite")

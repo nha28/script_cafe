@@ -1,4 +1,4 @@
-# Django settings for school project.
+# Django settings for script_cafe project.
 import os
 #Dynamically discover project path
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
@@ -68,7 +68,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, '../_static')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/school/_static/'
+STATIC_URL = '/script_cafe/_static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -106,10 +106,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'school.urls'
+ROOT_URLCONF = 'script_cafe.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'school.wsgi.application'
+WSGI_APPLICATION = 'script_cafe.wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, '../templates'),
