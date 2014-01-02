@@ -2,7 +2,7 @@ from django.views import generic
 from django.contrib.auth.models import User
 from courses.models import *
 from .forms import *
-from patio.models import *
+from basal.models import *
 from django.contrib.auth.forms import *
 from django.contrib.auth import login, logout, get_user_model
 from django.utils.decorators import method_decorator
@@ -16,18 +16,18 @@ from django.shortcuts import render
 
 class MainView(generic.FormView):
     form_class = AuthenticationForm
-    template_name = 'patio/main.html'
+    template_name = 'basal/main.html'
 
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated():
-            return HttpResponseRedirect(reverse('patio:dashboard'))
+            return HttpResponseRedirect(reverse('basal:dashboard'))
         else:
             form_class = self.get_form_class()
             form = self.get_form(form_class)
             return self.render_to_response(self.get_context_data(form=form))
 
 class RegistrationView(generic.FormView):
-    template_name = 'patio/registration.html'
+    template_name = 'basal/registration.html'
     form_class = UserCreationForm
 
     def form_valid(self, form):
@@ -42,10 +42,10 @@ class RegistrationView(generic.FormView):
                                 password=self.request.POST['password1'])
         login(self.request, new_user)
     
-        return HttpResponseRedirect(reverse('patio:main'))
+        return HttpResponseRedirect(reverse('basal:main'))
 
 class DashboardView(generic.TemplateView):
-    template_name = 'patio/dashboard.html'
+    template_name = 'basal/dashboard.html'
     
     def get_context_data(self, **kwargs):
         context = super(DashboardView, self).get_context_data(**kwargs)
@@ -80,11 +80,11 @@ class DashboardView(generic.TemplateView):
 class ProfileUpdateView(generic.UpdateView):
     model = User
     form_class = UserForm
-    template_name = 'patio/profile_update.html'
+    template_name = 'basal/profile_update.html'
 
     def get_success_url(self):
         messages.success(self.request, 'profile updated successfully')
-        return reverse('patio:main')
+        return reverse('basal:main')
 
     def get_object(self):
         obj = User.objects.get(id=self.request.user.id)
@@ -97,4 +97,4 @@ class ProfileUpdateView(generic.UpdateView):
 def logout_view(request):
     logout(request)
 #    messages.success(request, 'logout successfully')
-    return HttpResponseRedirect(reverse('patio:main'))
+    return HttpResponseRedirect(reverse('basal:main'))

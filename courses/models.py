@@ -1,5 +1,5 @@
 from django.db import models
-from patio.models import *
+from basal.models import *
 from django.contrib.auth.models import User
 
 class Course(models.Model):

@@ -36,16 +36,16 @@
             <a class='links' href='{% url "courses:course_index" %}'>
                 <span>COURSES</span></a>
 
-            <a class='links' href='{% url "patio:dashboard" %}'>
+            <a class='links' href='{% url "basal:dashboard" %}'>
                 <span>DASHBOARD</span></a>
-            <a class='links' href='{% url "patio:logout" %}'>
+            <a class='links' href='{% url "basal:logout" %}'>
                 <span>LOGOUT</span></a>
             {% else %}
             <p class='current_user'>Welcome to Script Café</p>
             <a class='links' ><span id='sign_in_button' 
-                    data-url='{% url "patio:login" %}'>LOGIN</span></a>
+                    data-url='{% url "basal:login" %}'>LOGIN</span></a>
             <a class='links' ><span id='create_an_account_button' 
-                    data-url='{% url "patio:registration" %}'>
+                    data-url='{% url "basal:registration" %}'>
                     REGISTER AN ACCOUNT</span></a>
             {% endif %}
             </nav>
@@ -62,7 +62,7 @@
             <div id='footer_1'>
                 <ul>
                     <li><a id='courses' 
-                        href='{% url "patio:about_us" %}'>About Us</a></li>
+                        href='{% url "basal:about_us" %}'>About Us</a></li>
                     <li>Copyright &copy; 2013 Script Café</li>
                 </ul>
             </div>
@@ -86,15 +86,15 @@
                     {% if user.username %}
                     <li><a href='{% url "courses:course_index" %}'>
                         Courses</a></li>
-                    <li><a href='{% url "patio:dashboard" %}'>
+                    <li><a href='{% url "basal:dashboard" %}'>
                         Dashboard</a></li>
-                    <li><a href='{% url "patio:logout" %}'>
+                    <li><a href='{% url "basal:logout" %}'>
                         Logout</a></li>
 
                         {% else %}
-                        <li><a href='{% url "patio:login" %}'>
+                        <li><a href='{% url "basal:login" %}'>
                             Login</a></li>
-                        <li><a href='{% url "patio:registration" %}'>
+                        <li><a href='{% url "basal:registration" %}'>
                             Register and account</a></li>
                         {% endif %}
                     </ul>

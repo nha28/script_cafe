@@ -4,12 +4,12 @@
 
 {% block extra_script_link %}
 {% load staticfiles %}
-<script type='text/javascript' src='{% static "patio/dashboard.js" %}'></script>
-<script type="text/javascript" src='{% static "patio/dist/jquery.jqplot.min.js" %}'></script>
-<script type="text/javascript" src='{% static "patio/dist/plugins/jqplot.pieRenderer.min.js" %}'></script>
-<script type="text/javascript" src='{% static "patio/dist/plugins/jqplot.donutRenderer.min.js" %}'></script>
-<link type='text/css' rel='stylesheet' href='{% static "patio/dashboard.css" %}' />
-<link type='text/css' rel='stylesheet' href='{% static "patio/dist/jquery.jqplot.css" %}' />
+<script type='text/javascript' src='{% static "basal/dashboard.js" %}'></script>
+<script type="text/javascript" src='{% static "basal/dist/jquery.jqplot.min.js" %}'></script>
+<script type="text/javascript" src='{% static "basal/dist/plugins/jqplot.pieRenderer.min.js" %}'></script>
+<script type="text/javascript" src='{% static "basal/dist/plugins/jqplot.donutRenderer.min.js" %}'></script>
+<link type='text/css' rel='stylesheet' href='{% static "basal/dashboard.css" %}' />
+<link type='text/css' rel='stylesheet' href='{% static "basal/dist/jquery.jqplot.css" %}' />
 {% endblock %}
 
 {% block body %}
@@ -27,11 +27,11 @@
 <p>A student since {{ user.date_joined }}</p>
 <div id='profile_edit_options'>
     <span><a id='change_password_button' 
-            href='#changePassword' data-url='{% url "patio:password_change" %}' 
+            href='#changePassword' data-url='{% url "basal:password_change" %}' 
             onclick='get_password_change_form()')>change password</a></span>
 
     <span><a id='update_profile_button' 
-            href='#updateProfile' data-url='{% url "patio:profile_update" %}' 
+            href='#updateProfile' data-url='{% url "basal:profile_update" %}' 
             onclick='get_profile_update_form()')>update profile</a></span>
 </div>
 </section>

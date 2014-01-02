@@ -3,7 +3,7 @@
 {% block extra_script_link %}
 {% load staticfiles %}
 <link rel='stylesheet' type='text/css' 
-href='{% static "patio/login.css" %}' />
+href='{% static "basal/login.css" %}' />
 {% endblock %}
 
 {% block popup_title %}Login{% endblock %}
@@ -17,7 +17,7 @@ href='{% static "patio/login.css" %}' />
         {% endfor %}
     </ul>
 {% endif %}
-	<form id='form' method='post' action='{% url "patio:login" %}'>
+	<form id='form' method='post' action='{% url "basal:login" %}'>
 		{% csrf_token %}
 		{% for field in form %}
         <div class='field_wrapper'>

@@ -2,14 +2,14 @@
 
 {% block extra_script_link %}
     {% load staticfiles %}
-    <script type='text/javascript' src='{% static 'patio/profile_update.js' %}'></script>
-	<link rel='stylesheet' type='text/css' href='{% static "patio/profile_update.css" %}' />
+    <script type='text/javascript' src='{% static 'basal/profile_update.js' %}'></script>
+	<link rel='stylesheet' type='text/css' href='{% static "basal/profile_update.css" %}' />
 {% endblock %}
 
 {% block popup_title %}Profile Update{% endblock %}
 {% block body %}
 <div id='form_container'>
-	<form id='form' method='post' action='{% url "patio:profile_update" %}'>
+	<form id='form' method='post' action='{% url "basal:profile_update" %}'>
 		{% csrf_token %}
 		{% for field in form %}
         <div class='field_wrapper'>
